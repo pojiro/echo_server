@@ -12,6 +12,7 @@ defmodule EchoServer.Worker do
     Logger.info("|=====> Starting #{__MODULE__} GenServer")
 
     port = Keyword.get(state, :port, _default_port = 10000)
+    # TODO: オプションの意味を調べる
     {:ok, socket} = :gen_tcp.listen(port, active: false, reuseaddr: true)
 
     send(self(), :accept)
